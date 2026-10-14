@@ -87,3 +87,20 @@ The stacked lift is the most firmware-friendly layout found so far: no new XY po
 3. Gap between the back of a parked head and the rear wall, for tier A umbilical routing.
 4. How the docking bracket mounts to the rear beam (screw pattern), since that would become the rack interface.
 5. Optionally, a second scan from the front, with the bed fully lowered, looking into the rear zone.
+
+## 3. A second HUB board for T4–T7
+
+The spare part sold as **"Hub Adapter Board for Snapmaker U1"** (SKU 11008, about €19, e.g. 3DJake) is the stock HUB board. The wiki's own purchase link for the HUB board points to that product. The board is marked `SPD-0034-V1.3`, and the wiki wiring photo (`https://wiki.snapmaker.com/u1/u1_hub-board-wiring_en.jpg`) shows its connectors:
+
+| Connector | Count | Used for | What a 2nd board needs |
+|---|---|---|---|
+| Toolhead USB-C (screw-locked) | 4 | USB data **and power** to each head | **Works as is**, with the stock toolhead cables (4 more needed) |
+| Docking sensor (small JST) | 4 | Hall boards on the dock | Works as is, with 4 more Hall boards |
+| USB to main board | 1 | Upstream of the board's USB hub. Heads appear as `usb-0:1.1`–`1.4` | A host USB port. The main board's single HUB USB link is taken. Options are an external USB hub on the user port or the "USB Expansion" connector (check what is plugged in there today). New heads appear under new by-paths and only need `[mcu e4..e7] serial:` entries |
+| **16-pin to main board** | 1 | Dock sensor analog lines to the main MCU ADCs (PB0/PC4/PC5/PB1) and probably control lines | **No second 16-pin socket on the main board.** Trace the pinout on the existing board and route the needed lines (4 dock sensors, plus any power-enable) to an extra MCU such as an RP2040. `park_detector` accepts that MCU's pins |
+| Toolhead power input | 1 | 24 V for the 4 heads | A second feed. Either split the existing feed (PSU DC rating unknown; check headroom) or use a separate 24 V PSU for the second bank |
+| 6-pin "FLAG2 / PWM / VCC" | 1 | Unknown, perhaps a fan or Top Cover | Probably not needed |
+
+**Verdict.** It is the right part for the head side of a second bank: power, USB and dock-sensor inputs for 4 heads, using stock cables. It is not plug-and-play. The upstream USB, the 16-pin signals and the 24 V feed each need a solution.
+
+**Main risk.** If the hub's toolhead power or the hub chip itself is enabled through the 16-pin cable, that enable line must be driven or tied by the extra MCU. A €19 board on the bench, with continuity checks against the stock board's 16-pin and a 24 V bench supply, would answer this before any mechanics are built.
