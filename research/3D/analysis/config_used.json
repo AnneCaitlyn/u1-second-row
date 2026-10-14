@@ -1,0 +1,55 @@
+{
+  "resolution_mm": 0.5,
+  "rotate_deg": 0,
+  "mirror_x": false,
+  "offset_x": -340.5,
+  "offset_y": 95.75,
+  "bed_center_machine": [
+    135.5,
+    136.0
+  ],
+  "nozzle_z": null,
+  "z_margin_mm": 5.0,
+  "bed_margin_mm": 5.0,
+  "head_width_mm": 57.5,
+  "dock_depth_mm": 75.0,
+  "new_docks": 4,
+  "machine": {
+    "travel_x": [
+      0.0,
+      271.0
+    ],
+    "travel_y": [
+      0.0,
+      335.0
+    ],
+    "print_area_x": [
+      0.5,
+      270.5
+    ],
+    "print_area_y": [
+      1.0,
+      271.0
+    ],
+    "docks": [
+      [
+        35.0,
+        332.2
+      ],
+      [
+        102.7,
+        332.2
+      ],
+      [
+        170.2,
+        332.2
+      ],
+      [
+        237.7,
+        332.2
+      ]
+    ],
+    "dock_pitch": 67.5,
+    "grab_slide": 8.5
+  }
+}
