@@ -9,6 +9,9 @@ Date: 2026-10-14. Sources: the reference repos in the README, shallow-cloned int
 | 03 | [03-host-software-ui.md](03-host-software-ui.md) | Moonraker, Fluidd, touchscreen, Snapmaker apps |
 | 04 | [04-slicer-profiles.md](04-slicer-profiles.md) | OrcaSlicer fork, U1 machine profiles |
 | 05 | [05-extended-firmware.md](05-extended-firmware.md) | Community firmware, build/flash/recovery path |
+| 06 | [06-wiki-and-stacked-docks.md](06-wiki-and-stacked-docks.md) | Official wiki check (corrections) and the stacked dock row / lift concept |
+
+> Update 2026-10-15: the official wiki has now been read (text dumps in [wiki/](wiki/)). Corrections are in report 06; for example, the latch slide is 8.5 mm, not ~10 mm.
 
 > Caveat: web access (Snapmaker wiki, GitHub issues/discussions) was declined during research, so findings come from source code and configs only. Physical dimensions beyond the configured travel limits, PSU rating, and community discussion are **unverified**.
 
